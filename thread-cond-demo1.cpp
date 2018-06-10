@@ -48,6 +48,7 @@ void *__thread_callback_produce(void *user_data)
     }
 
     g_is_produce_thread_running = 0;
+    pthread_cond_broadcast(&g_cond);
 }
 
 
@@ -64,7 +65,8 @@ int main()
     data = new ThreadData[g_max_thread_num];
 
     for (int i = 0; i < g_max_thread_num; ++i) {
-        std::string name = std::string("thread") + std::to_string(i);
+        char name[128]  = { 0 };
+        sprintf(name, "thread %d", i);
         data[i].setName(name);
     }
 
