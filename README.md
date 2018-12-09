@@ -12,3 +12,8 @@
 - [1.4命名管道 -FIFO](./ipc/fifo-demo1)
   - 只读open要阻塞到某个其他进程为写而打开这个FIFO为止，只写open同理。
   - 若write一个尚无进程为读而打开的FIFO，则产生信号SIGPIPE。若某个FIFO最后的写进程关闭了FIFO，则为该FIFO读进程产生一个文件结束标志。
+
+#### 2.信号量
+
+- [2.1 POSIX信号量](./ipc/samephore-demo1)
+
