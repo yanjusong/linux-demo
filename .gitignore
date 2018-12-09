@@ -1,3 +1,4 @@
 *.user
 *.out
 *.DS_Store
+*/*Debug/
