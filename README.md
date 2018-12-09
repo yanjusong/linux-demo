@@ -24,5 +24,6 @@
 
 #### 4.互斥量
 
-- [互斥量](./ipc/mutex-demo1)
+- [互斥量 -fork](./ipc/mutex-demo1)
+- [互斥量 -无亲缘关系进程同步](./ipc/mutex-demo2)
 
