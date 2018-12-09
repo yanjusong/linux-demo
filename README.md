@@ -22,3 +22,7 @@
 
 - [共享内存](./ipc/shared-memory-demo1)
 
+#### 4.互斥量
+
+- [互斥量](./ipc/mutex-demo1)
+
