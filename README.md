@@ -30,7 +30,8 @@
 ## [网络编程](./net)
 #### 1.TCP连接
 - [1.1简单的tcp](./net/tcp_hello_demo)
+  - 服务器: socket -> bind -> listen -> accept(阻塞) -> write -> close
+  - 客户端: socket -> connect -> read -> close
 
-  服务器: socket -> bind -> listen -> accept(阻塞) -> write -> close
-  客户端: socket -> connect -> read -> close
+
 
