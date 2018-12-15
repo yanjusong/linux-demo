@@ -31,7 +31,12 @@ int main(int argc, char *argv[])
 
     if (setsockopt(serv_sock, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(int)) < 0)
     {
-        error_handling("setsockopt() error");
+        error_handling("setsockopt() error, opt:SO_REUSEADDR");
+    }
+
+    if (setsockopt(serv_sock, SOL_SOCKET, SO_REUSEPORT, &reuse, sizeof(int)) < 0)
+    {
+        error_handling("setsockopt() error, opt:SO_REUSEADDR");
     }
 
     memset(&serv_addr, 0, sizeof(serv_addr));
