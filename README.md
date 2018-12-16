@@ -27,12 +27,14 @@
 - [互斥量 -fork](./ipc/mutex-demo1)
 - [互斥量 -无亲缘关系进程同步](./ipc/mutex-demo2)
 
+#### 5.消息队列
+- [XSI消息队列](./ipc/msgq)
+
 ## [网络编程](./net)
 #### 1.TCP连接
 - [1.1简单的tcp](./net/tcp_hello_demo)
-  - 服务器: socket -> bind -> listen -> accept(阻塞) -> write -> close
-  - 客户端: socket -> connect -> read -> close
+  - 服务器: socket -> bind -> listen -> accept(阻塞) -> write(阻塞) -> close
+  - 客户端: socket -> connect -> read(阻塞) -> close
 
 #### 2.UDP连接
 - [2.1简单的udp](./net/udp_hello_demo)
-
