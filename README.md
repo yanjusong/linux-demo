@@ -30,6 +30,10 @@
 #### 5.消息队列
 - [XSI消息队列](./ipc/msgq)
 
+#### 6.Unix域套接字
+
+- [Unix Domain Socket](./ipc/unix-socket)
+
 ## [网络编程](./net)
 #### 1.TCP连接
 - [1.1简单的tcp](./net/tcp_hello_demo)
