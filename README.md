@@ -33,6 +33,7 @@
 #### 6.Unix域套接字
 
 - [Unix Domain Socket](./ipc/unix-socket)
+- [Transfer File Descriptor](./ipc/unix-socket-transfer-fd)
 
 ## [网络编程](./net)
 #### 1.TCP连接
