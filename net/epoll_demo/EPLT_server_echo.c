@@ -9,7 +9,9 @@
 
 #define BUF_SIZE 4
 #define EPOLL_SIZE 50
+
 void error_handling(char *buf);
+int setSockReuse(int sock);
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +20,6 @@ int main(int argc, char *argv[])
     socklen_t adr_sz;
     int str_len, i;
     char buf[BUF_SIZE];
-    int reuse = 1;
 
     struct epoll_event *ep_events;
     struct epoll_event event;
@@ -36,13 +37,9 @@ int main(int argc, char *argv[])
     serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
     serv_adr.sin_port = htons(atoi(argv[1]));
 
-    if (setsockopt(serv_sock, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(int)) < 0)
+    if (setSockReuse(serv_sock) < 0)
     {
-        error_handling("setsockopt() error, opt:SO_REUSEADDR");
-    }
-    if (setsockopt(serv_sock, SOL_SOCKET, SO_REUSEPORT, &reuse, sizeof(int)) < 0)
-    {
-        error_handling("setsockopt() error, opt:SO_REUSEPORT");
+        error_handling("setSockReuse error");
     }
 
     if (bind(serv_sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)) == -1)
@@ -112,3 +109,20 @@ void error_handling(char *buf)
     fputc('\n', stderr);
     exit(1);
 }
+
+int setSockReuse(int sock)
+{
+    int reuse = 1;
+
+    if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(int)) < 0)
+    {
+        return -1;
+    }
+    if (setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &reuse, sizeof(int)) < 0)
+    {
+        return -1;
+    }
+
+    return 0;
+}
+
