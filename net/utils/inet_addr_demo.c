@@ -8,18 +8,20 @@
  *     const char *addr: 点分式的IP地址字符串
  *     int *n: 网络序(大端)的整型
  * @return:
- *     -1: 转化失败，给定字符串不是合法IP
+ *    -1: 转化失败，给定字符串不是合法IP
  *     1: 转化成功
+ * @attention: inet_addr具有局限性
+ *     - 函数调用成功有些系统返回INADDR_NONE，有些系统返回-1
+ *     - "255.255.255.255"转化会失败
  */
 int aton(const char *addr, int *n)
 {
-    struct in_addr sin_addr;
     int stat;
 
-    stat = inet_aton(addr, &sin_addr);
-    *n = (int)sin_addr.s_addr;
+    stat = inet_addr(addr);
+    *n = (int)stat;
 
-    return (stat == 1 ? 1 : -1);
+    return (stat == INADDR_NONE ? -1 : stat);
 }
 
 void test(const char *addr)

@@ -13,11 +13,9 @@
  */
 int aton(const char *addr, int *n)
 {
-    struct in_addr sin_addr;
     int stat;
 
-    stat = inet_aton(addr, &sin_addr);
-    *n = (int)sin_addr.s_addr;
+    stat = inet_pton(AF_INET, addr, (void *)n);
 
     return (stat == 1 ? 1 : -1);
 }

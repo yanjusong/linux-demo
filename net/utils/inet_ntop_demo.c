@@ -13,12 +13,10 @@
  */
 int ntoa(int n, char *addr)
 {
-    char *pstr;
-    struct in_addr sin_addr;
+    const char *pstr;
+    const void *pn = (const void *)&n;
 
-    sin_addr.s_addr = n;
-    pstr = inet_ntoa(sin_addr);
-    memcpy(addr, pstr, strlen(pstr));
+    pstr = inet_ntop(AF_INET, pn, addr, INET_ADDRSTRLEN);
 
     return (pstr ? 1 : -1);
 }
