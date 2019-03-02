@@ -43,3 +43,7 @@
 
 #### 2.UDP连接
 - [2.1简单的udp](./net/udp_hello_demo)
+
+## [锁](./lock)
+#### 锁的应用
+- [哲学家问题](./lock/philosopher_eating.c)
